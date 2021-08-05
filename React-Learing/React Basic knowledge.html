@@ -1,0 +1,2635 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>react基础知识</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+<base href='file:\\\C:\Users\asus\Desktop\'/>
+</head>
+<body>
+<h1>React学习</h1>
+<h2>目录</h2>
+<ul>
+<li>
+<a href="#%E4%B8%80react%E6%A6%82%E8%BF%B0">一、react概述</a>
+<ul>
+<li><a href="#11-react%E6%98%AF%E4%BB%80%E4%B9%88">1.1 react是什么</a></li>
+<li><a href="#12-react%E7%9A%84%E7%89%B9%E7%82%B9">1.2 react的特点</a></li>
+<li>
+<a href="#13-react%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8">1.3 react的基本使用</a>
+<ul>
+<li><a href="#131-react%E7%9A%84%E5%AE%89%E8%A3%85">1.3.1 react的安装</a></li>
+<li><a href="#132-react%E7%9A%84%E4%BD%BF%E7%94%A8">1.3.2 react的使用</a></li>
+</ul>
+</li>
+<li>
+<a href="#14-%E8%83%BD%E5%A4%9F%E4%BD%BF%E7%94%A8react%E8%84%9A%E6%89%8B%E6%9E%B6">1.4 能够使用react脚手架</a>
+<ul>
+<li><a href="#141-%E8%84%9A%E6%89%8B%E6%9E%B6%E7%9A%84%E6%84%8F%E4%B9%89">1.4.1 脚手架的意义</a></li>
+<li><a href="#142-%E4%BD%BF%E7%94%A8%E8%84%9A%E6%89%8B%E6%9E%B6%E5%88%9D%E5%A7%8B%E5%8C%96%E9%A1%B9%E7%9B%AE">1.4.2 使用脚手架初始化项目</a></li>
+<li><a href="#143-%E5%9C%A8%E8%84%9A%E6%89%8B%E6%9E%B6%E4%B8%AD%E4%BD%BF%E7%94%A8react">1.4.3 在脚手架中使用react</a></li>
+</ul>
+</li>
+<li><a href="#15-%E6%80%BB%E7%BB%93">1.5 总结</a></li>
+</ul>
+</li>
+<li>
+<a href="#%E4%BA%8Cjsx">二、JSX</a>
+<ul>
+<li>
+<a href="#21-jsx%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8">2.1 JSX的基本使用</a>
+<ul>
+<li><a href="#211-createelement%E7%9A%84%E9%97%AE%E9%A2%98">2.1.1 createElement()的问题</a></li>
+<li><a href="#212-jsx%E7%AE%80%E4%BB%8B">2.1.2 JSX简介</a></li>
+<li><a href="#213-jsx%E4%B8%AD%E4%BD%BF%E7%94%A8javascript%E8%A1%A8%E8%BE%BE%E5%BC%8F">2.1.3 JSX中使用JavaScript表达式</a></li>
+</ul>
+</li>
+<li>
+<a href="#22-jsx%E6%B8%B2%E6%9F%93">2.2 JSX渲染</a>
+<ul>
+<li><a href="#221-%E6%9D%A1%E4%BB%B6%E6%B8%B2%E6%9F%93">2.2.1 条件渲染</a></li>
+<li><a href="#222-%E5%88%97%E8%A1%A8%E6%B8%B2%E6%9F%93">2.2.2 列表渲染</a></li>
+<li><a href="#223-%E6%A0%B7%E5%BC%8F%E5%A4%84%E7%90%86">2.2.3 样式处理</a></li>
+</ul>
+</li>
+<li><a href="#23-jsx%E6%80%BB%E7%BB%93">2.3 JSX总结</a></li>
+</ul>
+</li>
+<li>
+<a href="#%E4%B8%89react%E7%BB%84%E4%BB%B6%E5%9F%BA%E7%A1%80">三、React组件基础</a>
+<ul>
+<li><a href="#31-%E7%BB%84%E4%BB%B6%E4%BB%8B%E7%BB%8D">3.1 组件介绍</a></li>
+<li>
+<a href="#32-%E7%BB%84%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA%E6%96%B9%E5%BC%8F">3.2 组件的创建方式</a>
+<ul>
+<li><a href="#321-%E4%BD%BF%E7%94%A8%E5%87%BD%E6%95%B0%E5%88%9B%E5%BB%BA%E7%BB%84%E4%BB%B6">3.2.1 使用函数创建组件</a></li>
+<li><a href="#322-%E4%BD%BF%E7%94%A8%E7%B1%BB%E5%88%9B%E5%BB%BA%E7%BB%84%E4%BB%B6">3.2.2 使用类创建组件</a></li>
+<li><a href="#323-%E6%8A%8A%E7%BB%84%E4%BB%B6%E6%8A%BD%E7%A6%BB%E4%B8%BA%E7%8B%AC%E7%AB%8B%E7%9A%84js%E6%96%87%E4%BB%B6">3.2.3 把组件抽离为独立的JS文件</a></li>
+</ul>
+</li>
+<li>
+<a href="#33-%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86">3.3 事件处理</a>
+<ul>
+<li><a href="#331-%E4%BA%8B%E4%BB%B6%E7%BB%91%E5%AE%9A">3.3.1 事件绑定</a></li>
+<li><a href="#332-%E4%BA%8B%E4%BB%B6%E5%AF%B9%E8%B1%A1">3.3.2 事件对象</a></li>
+</ul>
+</li>
+<li><a href="#34-%E6%9C%89%E7%8A%B6%E6%80%81%E7%BB%84%E4%BB%B6%E5%92%8C%E6%97%A0%E7%8A%B6%E6%80%81%E7%BB%84%E4%BB%B6">3.4 有状态组件和无状态组件</a></li>
+<li>
+<a href="#35-%E7%BB%84%E4%BB%B6%E4%B8%AD%E7%9A%84state%E5%92%8Csetstate">3.5 组件中的state和setState</a>
+<ul>
+<li><a href="#351-state%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8">3.5.1 state的基本使用</a></li>
+<li><a href="#352-setstate%E4%BF%AE%E6%94%B9%E7%8A%B6%E6%80%81">3.5.2 setState()修改状态</a></li>
+<li><a href="#353-%E4%BB%8Ejsx%E4%B8%AD%E6%8A%BD%E7%A6%BB%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E7%A8%8B%E5%BA%8F">3.5.3 从jsx中抽离事件处理程序</a></li>
+<li><a href="#354-%E4%BA%8B%E4%BB%B6%E7%BB%91%E5%AE%9Athis%E6%8C%87%E5%90%91">3.5.4 事件绑定this指向</a></li>
+<li><a href="#356-%E4%BA%8B%E4%BB%B6%E7%BB%91%E5%AE%9A%E6%80%BB%E7%BB%93">3.5.6 事件绑定总结</a></li>
+</ul>
+</li>
+<li>
+<a href="#36-%E8%A1%A8%E5%8D%95%E5%A4%84%E7%90%86">3.6 表单处理</a>
+<ul>
+<li><a href="#361-%E5%8F%97%E6%8E%A7%E7%BB%84%E4%BB%B6">3.6.1 受控组件</a></li>
+<li><a href="#362-%E5%8F%97%E6%8E%A7%E7%BB%84%E4%BB%B6%E7%9A%84%E5%A4%9A%E8%A1%A8%E5%8D%95%E5%85%83%E7%B4%A0%E4%BC%98%E5%8C%96">3.6.2 受控组件的多表单元素优化</a></li>
+<li><a href="#363-%E9%9D%9E%E5%8F%97%E6%8E%A7%E7%BB%84%E4%BB%B6%E4%B8%8D%E6%8E%A8%E8%8D%90%E4%BD%BF%E7%94%A8">3.6.3 非受控组件（不推荐使用）</a></li>
+</ul>
+</li>
+<li><a href="#37-%E7%BB%84%E4%BB%B6%E6%80%BB%E7%BB%93">3.7 组件总结</a></li>
+<li>
+<a href="#38-react%E7%BB%84%E4%BB%B6%E6%A1%88%E4%BE%8B">3.8 React组件案例</a>
+<ul>
+<li><a href="#381-%E6%A1%88%E4%BE%8B%E8%AF%84%E8%AE%BA%E5%88%97%E8%A1%A8">3.8.1 案例：评论列表</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#%E5%9B%9Breact%E7%BB%84%E4%BB%B6%E8%BF%9B%E9%98%B6">四、React组件进阶</a>
+<ul>
+<li><a href="#41-%E7%BB%84%E4%BB%B6%E7%9A%84props">4.1 组件的props</a></li>
+<li>
+<a href="#42-%E7%BB%84%E4%BB%B6%E9%80%9A%E8%AE%AF%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F">4.2 组件通讯的三种方式</a>
+<ul>
+<li><a href="#421-%E7%88%B6%E7%BB%84%E4%BB%B6%E4%BC%A0%E9%80%92%E6%95%B0%E6%8D%AE%E7%BB%99%E5%AD%90%E7%BB%84%E4%BB%B6">4.2.1 父组件传递数据给子组件</a></li>
+<li><a href="#422-%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BC%A0%E6%95%B0%E6%8D%AE%E7%BB%99%E7%88%B6%E7%BB%84%E4%BB%B6">4.2.2 子组件传数据给父组件</a></li>
+<li><a href="#423-%E5%85%84%E5%BC%9F%E7%BB%84%E4%BB%B6%E4%B9%8B%E9%97%B4%E7%9A%84%E9%80%9A%E8%AE%AF">4.2.3 兄弟组件之间的通讯</a></li>
+</ul>
+</li>
+<li><a href="#43-context">4.3 Context</a></li>
+<li>
+<a href="#43-props%E6%B7%B1%E5%85%A5">4.3 props深入</a>
+<ul>
+<li><a href="#431-children%E5%B1%9E%E6%80%A7">4.3.1 children属性</a></li>
+<li><a href="#432-props%E6%A0%A1%E9%AA%8C">4.3.2 props校验</a></li>
+<li><a href="#433-props%E7%9A%84%E9%BB%98%E8%AE%A4%E5%80%BC">4.3.3 props的默认值</a></li>
+<li><a href="#44-%E7%BB%84%E4%BB%B6%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">4.4 组件的生命周期</a></li>
+<li><a href="#441-%E7%BB%84%E4%BB%B6%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%A6%82%E8%BF%B0">4.4.1 组件的生命周期概述：</a></li>
+<li><a href="#442-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%9A%84%E4%B8%89%E4%B8%AA%E9%98%B6%E6%AE%B5">4.4.2 生命周期的三个阶段</a></li>
+</ul>
+</li>
+<li>
+<a href="#45-render-props">4.5 render-props</a>
+<ul>
+<li><a href="#451-render-props%E6%A8%A1%E5%BC%8F">4.5.1 render props模式</a></li>
+<li><a href="#452-%E6%BC%94%E7%A4%BAmouse%E7%BB%84%E4%BB%B6%E7%9A%84%E5%A4%8D%E7%94%A8">4.5.2 演示Mouse组件的复用</a></li>
+<li><a href="#453-childern%E4%BB%A3%E6%9B%BFrender%E5%B1%9E%E6%80%A7">4.5.3 childern代替render属性</a></li>
+<li><a href="#46-%E9%AB%98%E9%98%B6%E7%BB%84%E4%BB%B6">4.6 高阶组件</a></li>
+<li><a href="#461-%E6%A6%82%E8%BF%B0">4.6.1 概述</a></li>
+<li><a href="#462-%E8%AE%BE%E7%BD%AEdisplayname">4.6.2 设置displayName</a></li>
+<li><a href="#463-%E4%BC%A0%E9%80%92props">4.6.3 传递props</a></li>
+</ul>
+</li>
+<li><a href="#47-react%E7%BB%84%E4%BB%B6%E8%BF%9B%E9%98%B6%E6%80%BB%E7%BB%93">4.7 React组件进阶总结</a></li>
+</ul>
+</li>
+<li>
+<a href="#%E4%BA%94react%E5%8E%9F%E7%90%86">五、React原理</a>
+<ul>
+<li><a href="#51-%E5%AD%A6%E4%B9%A0%E7%9B%AE%E6%A0%87">5.1 学习目标</a></li>
+<li>
+<a href="#52-setstate%E8%AF%B4%E6%98%8E">5.2 setState()说明</a>
+<ul>
+<li><a href="#521-%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE%E4%B8%8E%E6%8E%A8%E8%8D%90%E8%AF%AD%E6%B3%95">5.2.1 更新数据与推荐语法</a></li>
+<li><a href="#522-setstate%E7%9A%84%E7%AC%AC%E4%BA%8C%E4%B8%AA%E5%8F%82%E6%95%B0">5.2.2 setState的第二个参数</a></li>
+<li><a href="#53-jsx%E8%AF%AD%E6%B3%95%E7%9A%84%E8%BD%AC%E5%8C%96%E8%BF%87%E7%A8%8B">5.3 JSX语法的转化过程</a></li>
+<li><a href="#54-%E7%BB%84%E4%BB%B6%E6%9B%B4%E6%96%B0%E6%9C%BA%E5%88%B6">5.4 组件更新机制</a></li>
+<li><a href="#55-%E7%BB%84%E4%BB%B6%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96">5.5 组件性能优化</a></li>
+<li><a href="#551-%E5%87%8F%E8%BD%BBstate">5.5.1 减轻state</a></li>
+<li><a href="#552-%E9%81%BF%E5%85%8D%E4%B8%8D%E5%BF%85%E8%A6%81%E7%9A%84%E9%87%8D%E6%96%B0%E6%B8%B2%E6%9F%93">5.5.2 避免不必要的重新渲染</a></li>
+<li><a href="#553-%E7%BA%AF%E7%BB%84%E4%BB%B6">5.5.3 纯组件</a></li>
+</ul>
+</li>
+<li><a href="#56-%E8%99%9A%E6%8B%9Fdom%E5%92%8Cdiff%E7%AE%97%E6%B3%95">5.6 虚拟DOM和Diff算法</a></li>
+<li><a href="#57-react%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93">5.7 React原理总结</a></li>
+</ul>
+</li>
+<li>
+<a href="#%E5%85%ADreact%E8%B7%AF%E7%94%B1">六、React路由</a>
+<ul>
+<li><a href="#61-react%E8%B7%AF%E7%94%B1%E4%BB%8B%E7%BB%8D">6.1 React路由介绍</a></li>
+<li><a href="#62-%E8%B7%AF%E7%94%B1%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8">6.2 路由的基本使用</a></li>
+<li><a href="#63-%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6%E8%AF%B4%E6%98%8E">6.3 常用组件说明</a></li>
+<li><a href="#64-%E8%B7%AF%E7%94%B1%E7%9A%84%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B">6.4 路由的执行过程</a></li>
+<li><a href="#65-%E7%BC%96%E7%A8%8B%E5%BC%8F%E5%AF%BC%E8%88%AA">6.5 编程式导航</a></li>
+<li><a href="#66-%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1">6.6 默认路由</a></li>
+<li>
+<a href="#67-%E5%8C%B9%E9%85%8D%E6%A8%A1%E5%BC%8F">6.7 匹配模式</a>
+<ul>
+<li><a href="#671-%E6%A8%A1%E7%B3%8A%E5%8C%B9%E9%85%8D%E6%A8%A1%E5%BC%8F">6.7.1 模糊匹配模式</a></li>
+<li><a href="#672-%E7%B2%BE%E7%A1%AE%E5%8C%B9%E9%85%8D%E6%A8%A1%E5%BC%8F">6.7.2 精确匹配模式</a></li>
+</ul>
+</li>
+<li><a href="#68-react%E8%B7%AF%E7%94%B1%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93">6.8 React路由基础总结</a></li>
+</ul>
+</li>
+</ul>
+<h1>react学习</h1>
+<h2>一、react概述</h2>
+<h3>1.1 react是什么</h3>
+<ul>
+<li>react是一个用于构建用户界面的JavaScript库</li>
+<li>用户界面：HTML界面（前端）</li>
+<li>react主要用来写HTML界面，或构建web应用</li>
+<li>从MVC角度看，react仅仅是视图层（V），负责视图的渲染</li>
+</ul>
+<h3>1.2 react的特点</h3>
+<ol>
+<li>
+<p>声明式</p>
+<ul>
+<li>只需要描述UI，跟写HTML一样</li>
+<li>react负责渲染UI，并在数据变化时更新UI</li>
+</ul>
+</li>
+<li>
+<p>基于组件</p>
+<ul>
+<li>组件是react最重要的内容</li>
+<li>组件表示内容的部分内容</li>
+<li>组合、复用多个组件，可以实现完整的页面功能</li>
+</ul>
+</li>
+<li>
+<p>学习一次，随处使用</p>
+<ul>
+<li>react可以开发web应用</li>
+<li>react开发移动端原生应用</li>
+<li>react开发VR应用</li>
+</ul>
+</li>
+</ol>
+<h3>1.3 react的基本使用</h3>
+<h4>1.3.1 react的安装</h4>
+<p>安装命令：npm i react react-dom</p>
+<p>react包是核心，提供创建元素，组件等功能</p>
+<p>react-dom包提供DOM相关功能</p>
+<h4>1.3.2 react的使用</h4>
+<ol>
+<li>引入react和react-dom两个js文件</li>
+<li>创建react元素</li>
+<li>渲染react元素到页面中</li>
+</ol>
+<p>react的使用：</p>
+<pre><code> //创建react元素
+ //参数一：元素名称
+ //参数二：元素属性
+ //参数三及其以后的参数：元素的子节点
+ const title=React.createElement(
+ 'p',
+ {titie:'标题'},
+ 'Hello',
+ React.createElement('span',null,'我是span标签')
+ )
+
+ //渲染react元素
+ //参数一：要渲染的react元素
+ //参数二：挂载点
+ ReactDOM.render(title,document.getElementById('root'))
+</code></pre>
+
+<p><em>渲染后的效果：</em></p>
+<pre><code>&lt;div id=&quot;root&quot;&gt;
+    &lt;p titie=&quot;标题&quot;&gt;
+       Hello
+    &lt;span&gt;我是span标签&lt;/span&gt;
+   &lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+
+<h3>1.4 能够使用react脚手架</h3>
+<h4>1.4.1 脚手架的意义</h4>
+<ol>
+<li>脚手架是开发现代web应用的必备</li>
+<li>充分利用webpack、Babel、ESLint等工具辅助项目开发</li>
+<li>零配置，无需手动配置繁琐的工具即可使用</li>
+<li>关注业务，而不是工具配置</li>
+</ol>
+<h4>1.4.2 使用脚手架初始化项目</h4>
+<ol>
+<li>初始化项目：命令：<code>npm create-react-app my-app</code></li>
+<li>启动项目，在项目根目录执行命令：<code>npm start</code></li>
+</ol>
+<h4>1.4.3 在脚手架中使用react</h4>
+<ol>
+<li>导入react和react-dom两个包 <code>import React from 'react'</code><code>import ReactDOM from 'react-dom'</code></li>
+<li>调用React-createElement()方法创建react元素</li>
+<li>调用ReactDOM.render()方法渲染react元素到页面中</li>
+</ol>
+<h3>1.5 总结</h3>
+<p><strong>React基础</strong></p>
+<ol>
+<li>React是构建用户界面的JavaScript库</li>
+<li>使用react时，推荐使用脚手架方式</li>
+<li>初始化命令：<code>npm create-react-app my-app</code></li>
+<li>启动项目命令：	<code>yarn start</code> 或者<code>npm start</code></li>
+<li>React.createElement()方法用于创建react元素到页面中</li>
+<li>ReactDOM.render()方法负责渲染react元素到页面中</li>
+</ol>
+<h2>二、JSX</h2>
+<h3>2.1 JSX的基本使用</h3>
+<h4>2.1.1 createElement()的问题</h4>
+<ol>
+<li>繁琐不简洁</li>
+<li>不直观，无法一眼看出所描述的结构</li>
+<li>不优雅，用户体验不爽</li>
+</ol>
+<h4>2.1.2 JSX简介</h4>
+<ul>
+<li>
+<p>JSX是JavaScript XML的简写，表示JavaScript代码中写XML(HTML)格式的代码</p>
+</li>
+<li>
+<p>优势：声明式语法更加直观，与HTML结构相同，降低了学习成本，提升开发效率</p>
+</li>
+<li>
+<p>JSX是React的核心内容</p>
+</li>
+</ul>
+<p><strong>使用步骤</strong></p>
+<ol>
+<li>使用JSX语法创建react元素</li>
+<li>使用ReactDOM.render()方法创建react元素到页面中</li>
+</ol>
+<p>JSX:</p>
+<pre><code>//使用jsx创建react元素
+ const title=&lt;h1&gt;hello jsx&lt;/h1&gt;
+//渲染react元素
+ReactDOM.render(title,document.getElementById('root'))
+</code></pre>
+
+<p><strong>为什么脚手架中可以使用JSX语法？</strong></p>
+<ol>
+<li>JSX不是标准的ECMAScropt语法，它是ECMAScript的语法扩展</li>
+<li>需要babel编译处理后，才能在浏览器环境中使用</li>
+<li>create-react-app脚手架中已经默认有该配置，无需手动配置</li>
+<li>编译JSX语法包为：@babel/preset-react</li>
+</ol>
+<p><strong>注意点</strong></p>
+<ol>
+<li>React元素的属性名使用驼峰命名法</li>
+<li>特殊属性名：class-&gt;className, for-&gt;htmlFor, tabindex-&gt;tablndex</li>
+<li>没有子节点的React元素可以用/&gt;结束</li>
+<li>推荐：使用小括号包裹JSX，从而避免js中的自动插入分号陷阱</li>
+</ol>
+<h4>2.1.3 JSX中使用JavaScript表达式</h4>
+<ol>
+<li>数据存储在JS中</li>
+<li>语法：{JavaScript表达式}</li>
+</ol>
+<h3>2.2 JSX渲染</h3>
+<h4>2.2.1 条件渲染</h4>
+<ol>
+<li>场景：loading效果</li>
+<li>条件渲染：根据条件渲染的特定JSX结构</li>
+<li>可以使用if/else或三元运算符或逻辑运算符来实现</li>
+</ol>
+<p>条件渲染：</p>
+<pre><code>const isloading=true
+const loadData=()=&gt;{
+  if (isloading){
+return &lt;div&gt;loading&lt;/div&gt;
+  }
+  return &lt;div&gt;数据加载完成&lt;/div&gt;
+}
+const title=(
+  &lt;h1&gt;
+条件渲染：
+{loadData()}
+  &lt;/h1&gt;
+)
+ReactDOM.render(title,document.getElementById('root'))
+</code></pre>
+
+<h4>2.2.2 列表渲染</h4>
+<ol>
+<li>如果要渲染一组数据，应该使用数组的map()方法</li>
+<li>注意：渲染列表时应该添加key属性，key属性值要保证唯一</li>
+<li>原则：map()遍历谁，就给谁添加key属性</li>
+<li>注意：避免使用索引号作为key</li>
+</ol>
+<p>列表渲染：</p>
+<pre><code>const songs=[
+  { id:1,name:'致未来的我'},
+  {id:2,name:'我是你的'},
+  {id:3,name:'拜托了世界'}
+]
+const list=(
+  &lt;ul&gt;
+{songs.map(item=&gt;&lt;li key={item.id}&gt;{item.name}&lt;/li&gt;)}
+  &lt;/ul&gt;
+)
+ReactDOM.render(list,document.getElementById('root'))
+</code></pre>
+
+<h4>2.2.3 样式处理</h4>
+<ol>
+<li>行内样式-style</li>
+<li>类名-className</li>
+</ol>
+<p>jsx的样式处理：</p>
+<pre><code>const list=(
+  &lt;h1 className=&quot;title&quot; style={{color:'red',background:'skyblue'}}&gt;
+JSX样式处理
+  &lt;/h1&gt;
+)
+//渲染react元素
+ReactDOM.render(list,document.getElementById('root'))
+</code></pre>
+
+<h3>2.3 JSX总结</h3>
+<ol>
+<li>JSX是React的核心内容</li>
+<li>JSX表示在JS代码中写HTML结构，是React声明式的体现</li>
+<li>使用JSX配合嵌入JS表达式，条件渲染，列表渲染，可以描述任意UI结构</li>
+<li>推荐使用className的方式结合JSX添加样式</li>
+<li>React完全利用JS语言自身的能力编写UI，而不是造轮子增强HTML功能</li>
+</ol>
+<h2>三、React组件基础</h2>
+<h3>3.1 组件介绍</h3>
+<ol>
+<li>组件是React的一等公民，使用React就是在组件</li>
+<li>组件表示页面中的部分功能</li>
+<li>组合多个组件实现完整的页面功能</li>
+<li>特点：可复用，独立，可组合</li>
+</ol>
+<h3>3.2 组件的创建方式</h3>
+<h4>3.2.1 使用函数创建组件</h4>
+<ol>
+<li>函数组件：使用JS的函数或（箭头函数）创建的组件</li>
+<li>规则1：函数名必须以大写字母开头(为了区分组件和普通的React元素）</li>
+<li>规则2：函数组件必须有返回值，表示该组件的结构</li>
+<li>如果返回值为null，表示不渲染任何内容</li>
+<li>渲染函数组件：用函数名作为组件标签名</li>
+<li>组件标签可以是单标签也可以是双标签</li>
+</ol>
+<p>函数组件：</p>
+<pre><code>function Hello(){
+  return (
+&lt;div&gt;
+  函数组件
+&lt;/div&gt;
+  )
+}
+// 或箭头函数
+const Hello=()=&gt;(&lt;div&gt;
+函数组件
+&lt;/div&gt;
+)
+//渲染组件
+ReactDOM.render(&lt;Hello /&gt;,document.getElementById('root'))
+</code></pre>
+
+<h4>3.2.2 使用类创建组件</h4>
+<ol>
+<li>类组件：使用ES6的class创建的组件</li>
+<li>规则1：类名必须要大写字母开头</li>
+<li>规则2：类组件应该继承React.Component父类，从而可以使用父类中提供的方法或属性</li>
+<li>规则3：类组件必须提供render()方法</li>
+<li>规则4：render()方法必须有返回值，表示该组件的结构</li>
+</ol>
+<p>类组件：</p>
+<pre><code>class Hello extends React.Component{
+  render(){
+return (
+  &lt;div&gt;
+类组件
+  &lt;/div&gt;
+)
+  }
+}
+//渲染组件
+ReactDOM.render(&lt;Hello/&gt;,document.getElementById('root'))
+</code></pre>
+
+<h4>3.2.3 把组件抽离为独立的JS文件</h4>
+<p><strong>思考：项目中的组件多了之后，该如何组织这些组件？</strong></p>
+<p>组件作为一个独立的个体，一般都会放到一个独立的JS文件中</p>
+<ol>
+<li>创建Hello.js</li>
+<li>在Hello.js中导入React</li>
+<li>创建组件（函数或类）</li>
+<li>在Hello.js中导出该组件</li>
+<li>在index.js中导入Hello组件</li>
+<li>渲染组件</li>
+</ol>
+<p><em>Hello.js文件</em></p>
+<pre><code>import React from 'react'
+
+//创建类组件
+class Hello extends React.Component{
+render(){
+return(
+&lt;div&gt;
+抽离到js文件的组件
+&lt;/div&gt;
+)
+}
+}
+//导出组件
+export default Hello
+</code></pre>
+
+<p><em>index.js文件</em></p>
+<pre><code>//导入Hello组件
+import Hello from './Hello'
+//渲染组件
+ReactDOM.render(&lt;Hello&gt;&lt;/Hello&gt;,document.getElementById('root'))
+</code></pre>
+
+<h3>3.3 事件处理</h3>
+<h4>3.3.1 事件绑定</h4>
+<ol>
+<li>React事件绑定语法与DOM事件语法相似</li>
+<li>语法：on+事件名称={事件处理程序}，比如：onClick={()=&gt;{}}</li>
+<li>注意：React事件采用驼峰命名法，比如：onMouseEnter,onFocus</li>
+</ol>
+<p>类组件：</p>
+<pre><code>class App extends React.Component{
+  handleclick(){
+alert('事件触发了')
+  }
+  render(){
+return (
+  &lt;button onClick={this.handleclick}&gt;点我&lt;/button&gt;
+)
+  }
+}
+//渲染组件
+ReactDOM.render(&lt;App/&gt;,document.getElementById('root'))
+</code></pre>
+
+<p>函数组件：</p>
+<pre><code>function App(){
+  function handleclick(){
+alert('事件触发了')
+  }
+  return (
+&lt;button onClick={handleclick}&gt;点我&lt;/button&gt;
+  )
+}
+ReactDOM.render(&lt;App/&gt;,document.getElementById('root'))
+</code></pre>
+
+<h4>3.3.2 事件对象</h4>
+<ol>
+<li>可以通过事件处理程序的参数获取到事件对象</li>
+<li>React中的事件对象叫做：合成事件（对象）</li>
+<li>合成事件：兼容所有浏览器，无需担心跨浏览器兼容性问题</li>
+</ol>
+<p>事件对象：</p>
+<pre><code>class App extends React.Component{
+  handleclick(e){
+     alert('事件触发了,但是页面不发生跳转')
+//阻止浏览器的默认行为（不让页面发生跳转）
+     e.preventDefault()
+    }
+  render(){
+     return (
+       &lt;a href=&quot;https://cn.bing.com/?scope=web&amp;FORM=ANNTH1&quot; onClick={this.handleclick}&gt;必应&lt;/ a&gt;
+   )
+  }
+}
+// 渲染组件
+ReactDOM.render(&lt;App /&gt;,document.getElementById('root'))
+</code></pre>
+
+<h3>3.4 有状态组件和无状态组件</h3>
+<ol>
+<li>函数组件又叫无状态组件，类组件又叫有状态组件</li>
+<li>状态state即数据</li>
+<li>函数组件没有自己的状态，只负责数据的展示（静）</li>
+<li>类组件有自己的状态，负责更新UI，让页面“动”起来</li>
+</ol>
+<h3>3.5 组件中的state和setState</h3>
+<h4>3.5.1 state的基本使用</h4>
+<ol>
+<li>状态state即数据，是组件内部的私有数据，只能在组件内部使用</li>
+<li>state的值是对象，表示一个组件中可以有多个数据</li>
+<li>获取状态：this.state</li>
+</ol>
+<p>state的初始化：</p>
+<pre><code>class App extends React.Component{
+  constructor(){
+    super()
+// 初始化state
+ this.state={
+   count:0
+ }
+  }
+  render(){
+   return (
+  &lt;div&gt;
+    &lt;h1&gt;
+     计数器:{this.state.count}
+    &lt;/h1&gt;
+  &lt;/div&gt;
+)
+  }
+}
+// 渲染组件
+ReactDOM.render(&lt;App/&gt;,document.getElementById('root'))
+</code></pre>
+
+<h4>3.5.2 setState()修改状态</h4>
+<ol>
+<li>状态是可变的</li>
+<li>语法：this.setState({要修改的数据})</li>
+<li>注意：不要直接修改state中的值，这是错误的！</li>
+<li>setState()作用：1.修改state 2.更新UI</li>
+<li>思想：数据驱动视图</li>
+</ol>
+<p>正确：</p>
+<pre><code>this.setState({
+   count:this.state.count+1
+})
+</code></pre>
+
+<p>错误：</p>
+<pre><code>this.state.count+=1
+</code></pre>
+
+<p>setState()修改状态：</p>
+<pre><code>class App extends React.Component{
+  constructor(){
+    super()
+    // 初始化state
+     this.state={
+       count:0
+     }
+  }
+  // 事件处理程序
+  onIncrement(){
+    this.setState({
+      count:this.state.count+1
+    })
+  }
+  render(){
+    return (
+      &lt;div&gt;
+        &lt;h1&gt;
+          计数器:{this.state.count}
+        &lt;/h1&gt;
+        &lt;button onClick={()=&gt;{
+          this.setState({
+            count:this.state.count+1
+          })
+        }}&gt;+1&lt;/button&gt;
+      &lt;/div&gt;
+    )
+  }
+}
+// 渲染组件
+ReactDOM.render(&lt;App/&gt;,document.getElementById('root'))
+</code></pre>
+
+<h4>3.5.3 从jsx中抽离事件处理程序</h4>
+<ol>
+<li>jsx中参加过多js逻辑代码，会显得非常混乱</li>
+<li>推荐：将逻辑抽离到单独的方法中，保证jsx结构清晰</li>
+<li>报错：× TypeError: Cannot read property 'setState' of undefined</li>
+<li>原因：事件处理程序中this的值为undefined</li>
+<li>希望：this指向组件实例（render方法中的this即为组件实例）</li>
+</ol>
+<h4>3.5.4 事件绑定this指向</h4>
+<ol>
+<li>
+箭头函数
+<ul>
+<li>利用箭头函数自身不绑定this的特点</li>
+<li>render()方法中的this为组件实例，可以获取到setState()</li>
+</ul>
+</li>
+<li>
+Function.prototype.bind()
+<ul>
+<li>利用ES5中的bind方法，将事件处理程序中的this与组件实例绑定到一起</li>
+</ul>
+</li>
+<li>
+class的实例方法
+<ul>
+<li>利用箭头函数形式的class实例方法</li>
+<li>注意：该语法是实验性语法，但是babel的存在可以直接使用</li>
+</ul>
+</li>
+</ol>
+<p>箭头函数：</p>
+<pre><code>class App extends React.Component{
+  constructor(){
+    super()
+    // 初始化state
+     this.state={
+       count:0
+     }
+  }
+  // 事件处理程序
+  onIncrement(){
+    this.setState({
+      count:this.state.count+1
+    })
+  }
+  render(){
+    return (
+      &lt;div&gt;
+        &lt;h1&gt;
+          计数器:{this.state.count}
+        &lt;/h1&gt;
+        &lt;button onClick={()=&gt;this.onIncrement()}&gt;+1&lt;/button&gt;
+      &lt;/div&gt;
+    )
+  }
+}
+// 渲染组件
+ReactDOM.render(&lt;App/&gt;,document.getElementById('root'))
+</code></pre>
+
+<p>Function.prototype.bind():</p>
+<pre><code>class App extends React.Component{
+  constructor(){
+    super()
+    this.state={
+      count:0
+    }
+    this.onIncrement=this.onIncrement.bind(this)
+  }
+    // 事件处理程序
+    onIncrement(){
+      this.setState({
+        count:this.state.count+1
+      })
+    }
+  render(){
+    return(
+      &lt;div&gt;
+      &lt;h1&gt;计时器:{this.state.count}&lt;/h1&gt;
+      &lt;button onClick={this.onIncrement}&gt;+1&lt;/button&gt;
+      &lt;/div&gt;
+    )
+  }
+}
+// 渲染组件
+ReactDOM.render(&lt;App/&gt;,document.getElementById('root'))
+</code></pre>
+
+<p>class的实例方法:</p>
+<pre><code>class App extends React.Component{
+  constructor(){
+    super()
+    this.state={
+      count:0
+    }
+  }
+    // 事件处理程序
+    onIncrement=()=&gt;{
+      this.setState({
+        count:this.state.count+1
+      })
+    }
+  render(){
+    return(
+      &lt;div&gt;
+      &lt;h1&gt;计时器:{this.state.count}&lt;/h1&gt;
+      &lt;button onClick={this.onIncrement}&gt;+1&lt;/button&gt;
+      &lt;/div&gt;
+    )
+  }
+}
+// 渲染组件
+ReactDOM.render(&lt;App/&gt;,document.getElementById('root'))
+</code></pre>
+
+<h4>3.5.6 事件绑定总结</h4>
+<ol>
+<li>推荐:使用class的实例方法</li>
+<li>箭头函数</li>
+<li>bind方法</li>
+</ol>
+<h3>3.6 表单处理</h3>
+<h4>3.6.1 受控组件</h4>
+<ol>
+<li>HTML中的表单元素时可输入的，也就是有自己的可变状态</li>
+<li>在React中可变状态通常保存在state中，并且只能通过setState()方法来修改</li>
+<li>React将state与表单元素值value绑定到一起，由state的值来控制表单元素的值</li>
+<li>受控组件：其值受到React控制的表单元素</li>
+</ol>
+<p><strong>步骤</strong></p>
+<ol>
+<li>在state中添加一个状态，作为表单元素的value值（控制表单元素值的来源）</li>
+<li>给表单元素绑定change事件，将表单元素的值设置为state的值（控制表单元素值的变化）</li>
+</ol>
+<p>代码：</p>
+<pre><code>state={txt:''}
+&lt;input type=&quot;text&quot; value={this.state.txt} onChange={e=&gt;this.setState({
+txt:e.target.value
+})}/&gt;
+</code></pre>
+
+<p>举例代码：</p>
+<pre><code>class App extends React.Component{
+  state={
+    txt:''
+  }
+  handleChange=e=&gt;{
+    this.setState({
+      txt:e.target.value
+    })
+  }
+  render(){
+    return(
+      &lt;div&gt;
+        &lt;input type=&quot;text&quot; value={this.state.txt} onChange={this.handleChange}/&gt;
+      &lt;/div&gt;
+    )
+  }
+}
+// 渲染组件
+ReactDOM.render(&lt;App&gt;&lt;/App&gt;,document.getElementById('root'))
+</code></pre>
+
+<p><strong>示例总结</strong></p>
+<ol>
+<li>文本框，富文本框，下拉框操作value属性</li>
+<li>复选框操作checked属性</li>
+</ol>
+<p>示例代码：</p>
+<pre><code>class App extends React.Component{
+  state={
+    txt:'',
+    content:'',
+    city:'bj',
+    isChecked:false
+  }
+  handleChange=e=&gt;{
+    this.setState({
+      txt:e.target.value
+    })
+  }
+  handleContent=e=&gt;{
+    this.setState({
+      content:e.target.value
+    })
+  }
+  handleCity=e=&gt;{
+    this.setState({
+      city:e.target.value
+    })
+  }
+  handelChecked=e=&gt;{
+    this.setState({
+      isChecked:e.target.checked
+    })
+  }
+  render(){
+    return(
+      &lt;div&gt;
+        {/* 文本框 */}
+        &lt;input type=&quot;text&quot;  value={this.state.txt} onChange={this.handleChange}/&gt;
+        &lt;br/&gt;
+        {/* 富文本框 */}
+        &lt;textarea value={this.state.content} onChange={this.handleContent}&gt;&lt;/textarea&gt;
+        &lt;br/&gt;
+        {/* 下拉框 */}
+        &lt;select value={this.state.city} onChange={this.handleCity}&gt;
+          &lt;option value=&quot;sh&quot;&gt;上海&lt;/option&gt;
+          &lt;option value=&quot;bj&quot;&gt;北京&lt;/option&gt;
+          &lt;option value=&quot;gz&quot;&gt;广州&lt;/option&gt;
+        &lt;/select&gt;
+        &lt;br/&gt;
+        {/* 复选框 */}
+        &lt;input type=&quot;checkbox&quot; checked={this.state.isChecked} onChange={this.handelChecked}/&gt;
+      &lt;/div&gt;
+    )
+  }
+}
+// 渲染组件
+ReactDOM.render(&lt;App&gt;&lt;/App&gt;,document.getElementById('root'))
+</code></pre>
+
+<h4>3.6.2 受控组件的多表单元素优化</h4>
+<p>问题：</p>
+<ol>
+<li>每个表单元素都有一个单独的事件处理程序，处理太繁琐</li>
+<li>优化：使用一个事件处理程序同时处理多个表单元素</li>
+</ol>
+<p>优化步骤：</p>
+<ol>
+<li>给表单元素添加name属性，名称与state相同</li>
+<li>根据表单元素类型获取对应值</li>
+<li>在change事件处理程序中通过[name]来修改对应的state</li>
+</ol>
+<p>优化后的代码：</p>
+<pre><code>class App extends React.Component{
+  state={
+    txt:'',
+    content:'',
+    city:'bj',
+    isChecked:false
+  }
+  handleForm=e=&gt;{
+    // 获取当前DOM对象
+    const target=e.target
+    // 根据类型获取值
+    const value=target.type=='checkbox'?target.checked:target.value
+    //获取name
+    const name=target.name
+    this.setState({
+      [name]:e.target.value
+    })
+  }
+
+  render(){
+    return(
+      &lt;div&gt;
+        {/* 文本框 */}
+        &lt;input type=&quot;text&quot;  name=&quot;txt&quot; value={this.state.txt} onChange={this.handleForm}/&gt;
+        &lt;br/&gt;
+        {/* 富文本框 */}
+        &lt;textarea name=&quot;content&quot; value={this.state.content} onChange={this.handleForm}&gt;&lt;/textarea&gt;
+        &lt;br/&gt;
+        {/* 下拉框 */}
+        &lt;select name=&quot;city&quot; value={this.state.city} onChange={this.handleForm}&gt;
+          &lt;option value=&quot;sh&quot;&gt;上海&lt;/option&gt;
+          &lt;option value=&quot;bj&quot;&gt;北京&lt;/option&gt;
+          &lt;option value=&quot;gz&quot;&gt;广州&lt;/option&gt;
+        &lt;/select&gt;
+        &lt;br/&gt;
+        {/* 复选框 */}
+        &lt;input name=&quot;isChecked&quot; type=&quot;checkbox&quot; checked={this.state.isChecked} onChange={this.handleForm}/&gt;
+      &lt;/div&gt;
+    )
+  }
+}
+// 渲染组件
+ReactDOM.render(&lt;App&gt;&lt;/App&gt;,document.getElementById('root'))
+</code></pre>
+
+<h4>3.6.3 非受控组件（不推荐使用）</h4>
+<ol>
+<li>说明：借助与ref，使用原生DOM方式来获取表单元素值</li>
+<li>ref的作用：获取DOM或组件</li>
+</ol>
+<p>使用步骤：</p>
+<ol>
+<li>调用React.createRef()方法创建一个ref对象</li>
+<li>将创建好的ref对象添加到文本框中</li>
+<li>通过ref对象获取到文本框的值</li>
+</ol>
+<p>代码：</p>
+<pre><code>constructor(){
+  suoer()
+  this.txtRef=React.createRef()
+}
+&lt;input type=&quot;text&quot; ref={this.txtRef} /&gt;
+Console.log(this.txtRef.current.value)
+</code></pre>
+
+<p>示例代码：</p>
+<pre><code>class App extends React.Component{
+  constructor(){
+    super()
+    // 创建Ref
+    this.txtRef=React.createRef()
+  }
+      // 获取文本框的值
+      getTxt=()=&gt;{
+        alert('文本框的值为：'+this.txtRef.current.value)
+      }
+  render(){
+    return(
+      &lt;div&gt;
+        &lt;input type=&quot;text&quot; ref={this.txtRef}&gt;&lt;/input&gt;
+        &lt; button onClick={this.getTxt}&gt;获取文本框的值&lt;/button&gt;
+      &lt;/div&gt;
+    )
+  }
+}
+// 渲染组件
+ReactDOM.render(&lt;App&gt;&lt;/App&gt;,document.getElementById('root'))
+</code></pre>
+
+<h3>3.7 组件总结</h3>
+<ol>
+<li>
+组件的两种创建方式：
+<ul>
+<li>函数组件</li>
+<li>类组件</li>
+</ul>
+</li>
+<li>无状态组件（函数组件），负责静态结构展示</li>
+<li>有状态组件（类组件），负责更新UI，让页面动起来</li>
+<li>绑定事件注意this指向问题</li>
+<li>推荐使用受控组件来处理表单</li>
+<li>完全利用JS语言的能力创建组件，这是React的思想</li>
+</ol>
+<h3>3.8 React组件案例</h3>
+<h4>3.8.1 案例：评论列表</h4>
+<p>需求分析：</p>
+<ul>
+<li>渲染评论列表（列表渲染）</li>
+<li>没有评论数据时渲染：暂无评论（条件渲染）</li>
+<li>获取评论信息，包括评论人和评论内容</li>
+<li>发表评论，更新评论列表</li>
+</ul>
+<p><strong>步骤</strong></p>
+<ol>
+<li>
+渲染评论列表
+<ul>
+<li>在state中初始化评论列表数据</li>
+<li>使用数组的map方法遍历state中的列表数据</li>
+<li>给每个被遍历的li元素添加key属性</li>
+</ul>
+</li>
+<li>
+渲染暂无评论
+<ul>
+<li>判断列表数据的长度是否为0</li>
+<li>如果为0，则渲染暂无评论</li>
+</ul>
+</li>
+<li>
+获取评论信息
+<ul>
+<li>使用受控组件方式处理表单元素</li>
+</ul>
+</li>
+<li>
+发表评论
+<ul>
+<li>给按钮绑定单击事件</li>
+<li>在事件处理程序中，通过state获取评论信息</li>
+<li>将评论信息添加到state中，并调用setState()方法更新state</li>
+<li>边界情况：清空文本框</li>
+<li>边界情况：非空判断</li>
+</ul>
+</li>
+</ol>
+<p>代码：</p>
+<pre><code>class App extends React.Component{
+    state={
+        comments:[
+            {id:1,name:'a',content:'aa'},
+            {id:2,name:'b',content:'bb'},
+            {id:3,name:'c',content:'cc'}
+        ],
+        // 评论人
+        userName:'',
+        // 评论内容
+        userContent:''
+    }
+    // 渲染评论内容
+    renderList(){
+        if(this.state.comments.length===0){
+            return &lt;div className=&quot;no-comment&quot;&gt;暂无评论，快去评论吧！&lt;/div&gt;
+        }else{
+            return &lt;ul&gt;
+            {this.state.comments.map(item=&gt;(
+            &lt;li key={item.id}&gt;
+            &lt;h3&gt;评论人：{item.name}&lt;/h3&gt;
+            &lt;p&gt;评论内容：{item.content}&lt;/p&gt;
+            &lt;/li&gt;
+            ))}
+        &lt;/ul&gt;
+        } 
+    }
+    // 处理表单元素值
+    handleForm=(e)=&gt;{
+        const{name,value}=e.target 
+        this.setState({
+            [name]:value
+        })
+    }
+    // 发表评论事件
+    addComment=()=&gt;{
+        const{comments,userContent,userName}=this.state
+        // 非空校验(去除掉空格后等于空)
+        if(userName.trim()===''||userContent.trim()===''){
+         alert('请输入评论人和评论内容')
+         return 
+        }
+        const newComments=[{
+            id:Math.random(),
+            name:userName,
+            content:userContent
+        },
+        ...comments]
+    // 清空文本框的值，只需要将对应的state清空
+        this.setState({
+            comments:newComments,
+            userName:'',
+            userContent:''
+        })
+    }
+    render(){
+        const {userContent,userName}=this.state
+        return(
+            &lt;div className=&quot;app&quot;&gt; 
+              &lt;div&gt;
+                &lt;input className=&quot;user&quot; placeholder=&quot;请输入评论人&quot; value={userName} name=&quot;userName&quot; onChange={this.handleForm}/&gt;
+                &lt;br/&gt;
+                &lt;textarea className=&quot;content&quot; rows=&quot;10&quot; cols=&quot;30&quot; placeholder=&quot;请输入评论内容&quot; value={userContent} name=&quot;userContent&quot; onChange={this.handleForm}&gt;&lt;/textarea&gt;
+                &lt;br/&gt;
+                &lt;button onClick={this.addComment}&gt;发表评论&lt;/button&gt;
+                &lt;/div&gt;
+                {this.renderList()}
+            &lt;/div&gt;
+        )
+    }
+}
+// 渲染组件
+ReactDOM.render(&lt;App&gt;&lt;/App&gt;,document.getElementById('root'))
+</code></pre>
+
+<h2>四、React组件进阶</h2>
+<h3>4.1 组件的props</h3>
+<ol>
+<li>组件是封闭的，要接收外部数据应该通过props来实现</li>
+<li>props的作用：接收传递给组件的数据</li>
+<li>传递数据：给组件标签添加属性</li>
+<li>接收数据：函数组件通过参数props接收数据，类组件通过this.props接收数据</li>
+</ol>
+<p>函数组件接收数据：</p>
+<pre><code>function Hello(props){
+    return(
+        &lt;div&gt;
+            接收的数据：{props.name}
+        &lt;/div&gt;
+    )
+}
+ReactDOM.render(&lt;Hello name=&quot;jack&quot; age={19}&gt;&lt;/Hello&gt;,document.getElementById('root'))
+</code></pre>
+
+<p>类组件接收数据：</p>
+<pre><code>class Hello extends React.Component{
+    render(){
+        return(
+            &lt;div&gt;
+                接收到的数据：{this.props.age}
+            &lt;/div&gt;
+        )
+    }
+}
+ReactDOM.render(&lt;Hello name=&quot;jack&quot; age={19}&gt;&lt;/Hello&gt;,document.getElementById('root'))
+</code></pre>
+
+<p><strong>特点</strong></p>
+<ol>
+<li>可以给组件传递任意类型的数据</li>
+<li>props是只读的对象，只能读取属性的值，无法修改对象</li>
+<li>注意：使用类组件时，如果写了构造函数，应该将props传递给super()，否则无法在构造函数中获取到props</li>
+</ol>
+<p>代码：</p>
+<pre><code>class Hello extends React.Component{
+    constructor(props){
+      super(props)
+ }
+    render(){
+        return(
+            &lt;div&gt;
+                接收到的数据：{this.props.age}
+            &lt;/div&gt;
+        )
+    }
+}
+ReactDOM.render(&lt;Hello name=&quot;jack&quot; age={19}&gt;&lt;/Hello&gt;,document.getElementById('root'))
+</code></pre>
+
+<h3>4.2 组件通讯的三种方式</h3>
+<p><strong>组件之间的通讯分为3种：</strong></p>
+<ol>
+<li>父组件 -&gt; 子组件</li>
+<li>子组件 -&gt; 父组件</li>
+<li>兄弟组件</li>
+</ol>
+<h4>4.2.1 父组件传递数据给子组件</h4>
+<ol>
+<li>父组件提供要传递的state数据</li>
+<li>给子组件标签添加属性，值为state中的数据</li>
+<li>子组件中通过props接收父组件中传递的数据</li>
+</ol>
+<p>代码：</p>
+<pre><code>class Parent extends React.Component{
+    state={lastName:'王'}
+    render(){
+        return(
+            &lt;div className=&quot;parent&quot;&gt;
+            父组件传递数据给子组件:&lt;Child name={this.state.lastName}&gt;&lt;/Child&gt;
+        &lt;/div&gt;
+        )
+    }
+}
+// 子组件
+function Child(props){
+    return &lt;div className=&quot;child&quot;&gt;子组件接收到的数据:{props.name}&lt;/div&gt;
+}
+ReactDOM.render(&lt;Parent&gt;&lt;/Parent&gt;,document.getElementById('root'))
+</code></pre>
+
+<h4>4.2.2 子组件传数据给父组件</h4>
+<p>思路：利用回调函数，父组件提供回调，子组件调用，将要传递的数据作为回调函数的参数</p>
+<ol>
+<li>父组件提供一个回调函数（用于接收数据）</li>
+<li>将函数作为属性的值，传递给子组件</li>
+<li>子组件通过props调用回调函数</li>
+<li>将子组件的数据作为参数值传递给回调函数</li>
+</ol>
+<p>代码：</p>
+<pre><code>// 父组件
+class Parent extends React.Component{
+    state={
+        parentMsg:''
+    }
+    // 提供回调函数，用来接收数据
+    getChildMsg=(data)=&gt;{
+        alert('接收子组件中传递过来的数据'+data)
+        this.setState({
+            parentMsg:data
+        })
+    }
+    render(){
+        return(
+            &lt;div className=&quot;parent&quot;&gt;
+            父组件:{this.state.parentMsg}
+            &lt;Child getMsg={this.getChildMsg}&gt;&lt;/Child&gt;
+            &lt;/div&gt;
+        )
+    }
+}
+// 子组件
+class Child extends React.Component{
+    state={ChildMsg:'React'}
+    handleClick=()=&gt;{
+        this.props.getMsg(this.state.ChildMsg)
+    }
+    render(){
+        return(
+            &lt;div&gt;
+            &lt;button onClick={this.handleClick}&gt;点我给父组件传递数据&lt;/button&gt;
+            &lt;/div&gt;
+        )
+    }
+}
+ReactDOM.render(&lt;Parent&gt;&lt;/Parent&gt;,document.getElementById('root'))
+</code></pre>
+
+<h4>4.2.3 兄弟组件之间的通讯</h4>
+<ol>
+<li>将共享状态提升到最近的公共父组件中，由这个公共父组件管理这个状态</li>
+<li>思想：状态提升</li>
+<li>公共父组件职责：1.提供共享状态 2.提供操作共享的方法</li>
+<li>要通讯的子组件只需要通过props接收状态或操作状态的方法</li>
+</ol>
+<p>代码：</p>
+<pre><code>// 父组件
+class Counter extends React.Component{
+    // 提供共享状态
+    state={
+        count:0
+    }
+    // 更新修改状态的方法
+    onIncrement=()=&gt;{
+        this.setState({
+            count:this.state.count+1
+        })
+    }
+    render(){
+        return &lt;div&gt;
+            &lt;Child1 count={this.state.count}&gt;&lt;/Child1&gt;
+            &lt;Child2 onIncrement={this.onIncrement}&gt;&lt;/Child2&gt;
+        &lt;/div&gt;
+    }
+}
+const Child1=(props)=&gt;{
+    return &lt;h1&gt;计数器：{props.count}&lt;/h1&gt;
+}
+const Child2=(props)=&gt;{
+    return &lt;button onClick={props.onIncrement}&gt;+1&lt;/button&gt;
+}
+ReactDOM.render(&lt;Counter&gt;&lt;/Counter&gt;,document.getElementById('root'))
+</code></pre>
+
+<h3>4.3 Context</h3>
+<p><strong>思考：</strong></p>
+<p>App组件（第一层）要传递给Child组件（第四层），该如何处理？</p>
+<ul>
+<li>
+<p>处理方式：使用props一层层往下传递（繁琐）</p>
+</li>
+<li>
+<p>更好的方式：</p>
+<ul>
+<li>使用Context</li>
+<li>作用：跨组件传递数据（比如：主题，语言等）</li>
+</ul>
+</li>
+</ul>
+<p><strong>使用步骤</strong></p>
+<ol>
+<li>调用React.createContext()创建Provider(提供数据)和Consumer(消费数据)两个组件
+<code>const {Provider,Consumer}=React.createContext()</code></li>
+<li>
+<p>使用Provider组件作为父节点</p>
+<pre><code>    &lt;Provider&gt;
+    &lt;div className=&quot;app&quot;&gt;
+       &lt;Node&gt;&lt;/Node&gt;
+    &lt;/div&gt;
+    &lt;/Provider&gt;
+</code></pre>
+
+</li>
+<li>设置value属性，表示要传递的数据
+<code>&lt;Provider value=&quot;pick&quot;&gt; &lt;/Provider&gt;</code></li>
+<li>
+<p>使用Consumer组件接收数据（data为value值）</p>
+<pre><code>  &lt;Consumer&gt;
+      {data=&gt;&lt;span&gt;我是子节点--{data}&lt;/span&gt;}
+ &lt;/Consumer&gt;  
+</code></pre>
+
+</li>
+</ol>
+<p><strong>总结</strong></p>
+<ol>
+<li>如果两个组件是远方亲戚（比如：嵌套多层）可以使用Context实现组件通讯</li>
+<li>Context提供两个组件：Provider和Consumer</li>
+<li>Provider组件：用来提供数据</li>
+<li>Consumer组件：用来消费数据</li>
+</ol>
+<h3>4.3 props深入</h3>
+<h4>4.3.1 children属性</h4>
+<ul>
+<li>children属性：表示组件标签的子节点，当组件标签有子节点时，props就会有该属性</li>
+<li>childen属性与普通的props一样，值可以是任意值（文本，React元素，组件，甚至是函数）</li>
+</ul>
+<p>代码：(props.children即为Test组件)</p>
+<pre><code>const Test=()=&gt; &lt;button&gt;我是button组件&lt;/button&gt;
+const App=(props)=&gt;{
+    return (
+        &lt;div&gt;
+           &lt;h1&gt;
+               组件标签的子节点{props.children}
+           &lt;/h1&gt;
+        &lt;/div&gt;
+    )
+}
+ReactDOM.render(
+    &lt;App&gt;
+        &lt;Test/&gt;
+    &lt;/App&gt;,
+    document.getElementById('root')
+)
+</code></pre>
+
+<p>代码：(props.children即为函数)</p>
+<pre><code>const App=(props)=&gt;{
+    return (
+        &lt;div&gt;
+           &lt;h1&gt;
+               组件标签的子节点
+              &lt;button onClick={()=&gt;props.children()}&gt;点击&lt;/button&gt;
+           &lt;/h1&gt;
+        &lt;/div&gt;
+    )
+}
+ReactDOM.render(
+    &lt;App&gt;
+        {()=&gt;alert('这是一个函数子节点')}
+    &lt;/App&gt;,
+    document.getElementById('root')
+)
+</code></pre>
+
+<h4>4.3.2 props校验</h4>
+<p><a href="https://zh-hans.reactjs.org/docs/typechecking-with-proptypes.html" title="使用 PropTypes 进行类型检查">https://zh-hans.reactjs.org/docs/typechecking-with-proptypes.html</a></p>
+<p><strong>问题：</strong></p>
+<ul>
+<li>对于组件来说，props是外来的，无法保证组件使用者传入什么格式的数据</li>
+<li>如果传入的数据格式不对，可能会导致组件内部报错</li>
+<li>关键问题：组件使用者不知道明确的错误原因</li>
+</ul>
+<p><strong>解决方法：</strong></p>
+<ul>
+<li>props校验：运行在创建组件的时候，就指定props的类型，格式等
+<code>App.propTypes={colors:PropTypes.array}</code></li>
+<li>作用：捕获使用组件时因为props导致的错误，给出明确的错误提示，增加组件的健壮性</li>
+</ul>
+<p><strong>使用步骤</strong></p>
+<ol>
+<li>安装包props-types(npm i props-types)</li>
+<li>导入props-types包</li>
+<li>使用组件名.propsTypes={}来给组件的props添加校验规则</li>
+<li>校验规则：通过propsTypes对象来指定</li>
+</ol>
+<p>props校验：(约定colors属性为array类型，若类型不对则报出明确错误，便于分析错误原因)</p>
+<pre><code>import PropTypes from 'prop-types'
+const App=(props)=&gt;{
+    const arr = props.colors
+    const lis=arr.map((item,index)=&gt; &lt;li key={index}&gt;{item}&lt;/li&gt;)
+    return &lt;ul&gt;{lis}&lt;/ul&gt;
+}
+// 添加props检验
+App.propTypes={
+    colors:PropTypes.array
+}
+ReactDOM.render(&lt;App colors={['red','blue']}&gt;&lt;/App&gt;,document.getElementById('root'))
+</code></pre>
+
+<p><strong>约束规则</strong></p>
+<ol>
+<li>常见类型：array,bool,func,numder,object,string</li>
+<li>React元素类型：element</li>
+<li>必填项：isRequired</li>
+<li>特定结构的对象：shape({})</li>
+</ol>
+<p>校验案例：</p>
+<pre><code>//属性a:数值number ，属性fn：函数func并为必填项，
+//属性tag：React元素（element），属性filter：对象({area:'上海',price:1999})
+import PropTypes from 'prop-types'
+const App=(props)=&gt;{
+    return(&lt;div&gt;
+        &lt;h1&gt;
+            props校验：
+        &lt;/h1&gt;
+    &lt;/div&gt;)
+}
+App.propTypes={
+    a:PropTypes.number,
+    fn:PropTypes.func.isRequired,
+    tag:PropTypes.element,
+    filter:PropTypes.shape({
+        area:PropTypes.string,
+        price:PropTypes.number
+    })
+}
+ReactDOM.render(&lt;App fn={()=&gt;{}}&gt;&lt;/App&gt;,document.getElementById('root'))
+</code></pre>
+
+<h4>4.3.3 props的默认值</h4>
+<ol>
+<li>场景：分页组件-&gt;每页显示条数</li>
+<li>作用：给props设置默认值，在未传入props时生效</li>
+</ol>
+<p>代码：</p>
+<pre><code>const App=(props)=&gt;{
+    return(
+    &lt;div&gt;
+        &lt;h1&gt;此处显示props的默认值：{props.pageSize}&lt;/h1&gt;
+    &lt;/div&gt;
+    )
+}
+// 添加props默认值
+App.defaultProps={
+    pageSize:10
+}
+// 组件中不传入pageSize时则为默认值，传入则为传入值
+ReactDOM.render(&lt;App&gt;&lt;/App&gt;,document.getElementById('root'))
+</code></pre>
+
+<h3>4.4 组件的生命周期</h3>
+<h4>4.4.1 组件的生命周期概述：</h4>
+<ul>
+<li>意义：组件的生命周期有助于理解组件的运动方式、完成更复杂的组件功能、分析组件错误原因等</li>
+<li>组件生命周期：组件从被创建到挂在到页面中运行，再到组件不用时卸载的过程</li>
+<li>钩子函数：生命周期的每个阶段总是伴随着一些方法调用，这些方法就是生命周期的钩子函数</li>
+<li>钩子函数的作用：为开发人员在不同阶段操作组件提供了时机</li>
+</ul>
+<h4>4.4.2 生命周期的三个阶段</h4>
+<ul>
+<li>
+创建时（挂在阶段）
+<ul>
+<li>执行时机：组件创建时（页面加载时）</li>
+<li>执行顺序：constructor()-&gt;render()-&gt;componentDidMount</li>
+<li>|钩子函数| 触发时机|作用|</li>
+<li>|constructor | 创建组件时最先执行 | 1.初始化state 2.为事件处理程序绑定this|</li>
+<li>|render | 每次组件渲染都会触发 | 渲染UI（注意：不能调用setState()）|</li>
+<li>|componentDidMount |组件挂载(完成DOM渲染)后 | 1.发送网络请求 2.DOM操作|</li>
+</ul>
+</li>
+</ul>
+<p>代码：</p>
+<pre><code>class App extends React.Component{
+    constructor(props){
+        super(props)
+        // 初始化state
+        this.state={
+            count:0
+        }
+    }
+    // 1. 进行DOM操作 2.发送请求获取数据
+    componentDidMount(){
+      const title=document.getElementById('title')
+      console.log(title)
+    }
+    render(){
+        return (
+            &lt;div&gt;
+                &lt;h1 id=&quot;title&quot;&gt;统计豆豆被打的次数：&lt;/h1&gt;
+                &lt;button id=&quot;btn&quot;&gt;&lt;/button&gt;
+            &lt;/div&gt;
+        )
+    }
+}
+ReactDOM.render(&lt;App&gt;&lt;/App&gt;,document.getElementById('root'))
+</code></pre>
+
+<ul>
+<li>
+更新时（更新阶段）
+<ul>
+<li>执行时机：1.setState() 2.forceUpdate() 3.组件接收到的心的props</li>
+<li>说明：以上三者任意一种变化，组件就会重新渲染</li>
+<li>执行顺序：render()-&gt;componentDidUpdate()</li>
+<li>|钩子函数| 触发时机|作用|</li>
+<li>|render|每次组件渲染都会触发|渲染UI(与挂载阶段是同一个render())|</li>
+<li>|componentDidUpdate|组件更新(完成DOM渲染)后|1.发送网络请求 2.DOM操作 注意：如果要setState()必须放在一个if条件中</li>
+</ul>
+</li>
+</ul>
+<p>代码1：</p>
+<pre><code>class App extends React.Component{
+    constructor(props){
+        super(props)
+        // 初始化state
+        this.state={
+            count:0
+        }
+    }
+    //打豆豆
+    handleClick=()=&gt;{
+        // this.setState({
+        //     count:this.state.count+1
+        // })
+
+        // 演示强制更新
+        this.forceUpdate()
+    }
+    render(){
+        return (
+            &lt;div&gt;
+               &lt;Counter count={this.state.count}&gt;&lt;/Counter&gt;
+                &lt;button onClick={this.handleClick}&gt;打豆豆&lt;/button&gt;
+            &lt;/div&gt;
+        )
+    }
+}
+class Counter extends React.Component{
+    render(){
+        return &lt;h1&gt;统计豆豆被打的次数：{this.props.count}&lt;/h1&gt;
+    }
+}
+ReactDOM.render(&lt;App&gt;&lt;/App&gt;,document.getElementById('root'))
+</code></pre>
+
+<p>代码2：</p>
+<pre><code>class App extends React.Component{
+    constructor(props){
+        super(props)
+        // 初始化state
+        this.state={
+            count:0
+        }
+    }
+    //打豆豆
+    handleClick=()=&gt;{
+     this.setState({
+         count:this.state.count+1
+     })
+    }
+    render(){
+        return (
+            &lt;div&gt;
+               &lt;Counter count={this.state.count}&gt;&lt;/Counter&gt;
+                &lt;button onClick={this.handleClick}&gt;打豆豆&lt;/button&gt;
+            &lt;/div&gt;
+        )
+    }
+}
+class Counter extends React.Component{
+    render(){
+        return &lt;h1 id=&quot;title&quot;&gt;统计豆豆被打的次数：{this.props.count}&lt;/h1&gt;
+    }
+    //注意：如果要setState()必须放在一个if条件中
+    // 所以：直接调用setState()更新状态，会导致递归更新
+    componentDidUpdate(prevProps){
+    // 正确做法：比较前后更新的props是否相同，来决定是否重新渲染组件
+    console.log('上一次的props：',prevProps,'，当前props：',this.props)
+    if(prevProps.count!==this.props.count){
+        // this.setState({})
+        //发送ajax请求的代码
+    }
+}
+}
+ReactDOM.render(&lt;App&gt;&lt;/App&gt;,document.getElementById('root'))
+</code></pre>
+
+<ul>
+<li>
+卸载时（卸载阶段）
+<ul>
+<li>执行时机：组件从页面中消失</li>
+<li>|钩子函数| 触发时机|作用|</li>
+<li>|componentWillUnmount|组件卸载(从页面消失)|执行清理工作(比如:清理定时器等)|</li>
+</ul>
+</li>
+</ul>
+<p>代码：</p>
+<pre><code>class App extends React.Component{
+        constructor(props){
+        super(props)
+        // 初始化state
+        this.state={
+            count:0
+        }
+    }
+    // 打豆豆
+    handleClick=()=&gt;{
+        this.setState({
+            count:this.state.count+1
+        })
+    }
+    render(){
+        return(
+            &lt;div&gt;
+               {
+                this.state.count&gt;3
+                ? &lt;p&gt;豆豆被打死了&lt;/p&gt;
+                :&lt;Counter count={this.state.count}&gt;&lt;/Counter&gt;
+               }
+                &lt;button onClick={this.handleClick}&gt;打豆豆&lt;/button&gt;
+            &lt;/div&gt;
+        )
+    }
+}
+class Counter extends React.Component{
+    render(){
+        return &lt;h1&gt;统计豆豆被打次数：{this.props.count}&lt;/h1&gt;
+    }
+    componentDidMount(){
+        // 开启定时器
+        this.timeID=setInterval(()=&gt;{
+           console.warn(&quot;定时器&quot;)
+        },1000)
+    }
+    // 组件卸载的钩子函数
+    componentWillUnmount(){
+        console.warn(&quot;生命周期钩子函数：omponentWillUnmoun&quot;)
+        // 清理计时器
+        clearInterval(this.timeID)
+    }
+}
+ReactDOM.render(&lt;App&gt;&lt;/App&gt;,document.getElementById('root'))
+</code></pre>
+
+<h3>4.5 render-props</h3>
+<h4>4.5.1 render props模式</h4>
+<ul>
+<li>思考：如果两个组件中的部分功能相似或相同，该如何处理</li>
+<li>处理方式：复用相似的功能（联想函数封装）</li>
+<li>复用什么：1.state 2.操作state的方法(组件状态逻辑)</li>
+<li>两种方式：1.render props模式 2.高阶组件(HOC)</li>
+<li>注意：这两种方式不是鑫的API，而是利用React自身特点的编码技巧，演化而成的固定写法</li>
+</ul>
+<p><strong>思路分析</strong></p>
+<ul>
+<li>思路：将复用的state和操作的state的方法封装到一个组件中</li>
+<li>问题1：如何拿到该组件中复用的state</li>
+<li>在使用组件时，添加一个值为函数的prop，通过参数来获取（需要组件内部实现）</li>
+<li>问题2：如何渲染任意的UI？</li>
+<li>使用该函数的返回值作为要渲染的UI内容（需要组件内部实现）</li>
+</ul>
+<p>代码：</p>
+<pre><code>&lt;Mouse render={(mouse)=&gt;(
+  &lt;p&gt;鼠标当前位置{mouse.x},{mouse.y}&lt;/p&gt;
+)}/&gt;
+</code></pre>
+
+<p><strong>使用步骤</strong></p>
+<ol>
+<li>创建Mouse组件，在组件中提供复用的状态逻辑代码(1.状态 2.操作状态的方法)</li>
+<li>将要复用的状态作为props.render(state)方法的参数，暴露到组件外部</li>
+<li>使用props.render()的返回值作为要渲染的内容</li>
+</ol>
+<p>代码：(获取鼠标位置并打印出)</p>
+<pre><code>class Mouse extends React.Component{
+    // 鼠标位置state
+      state={
+            x:0,
+            y:0
+        }
+    // 鼠标移动事件处理程序
+    handleMouseMove=e=&gt;{
+        this.setState({
+            x:e.clientX,
+            y:e.clientY
+        })
+    }
+    // 监听鼠标移动事件
+    componentDidMount(){
+        window.addEventListener('mousemove',this.handleMouseMove)
+    }
+    render(){
+        return this.props.render(this.state)
+    }
+}
+class App extends React.Component{
+    render(){
+        return (
+            &lt;div&gt;
+                &lt;h1&gt;
+                    render props模式
+                    &lt;Mouse render={(mouse)=&gt;{
+                        return &lt;p&gt;鼠标位置：{mouse.x},{mouse.y}&lt;/p&gt;
+                    }}&gt;&lt;/Mouse&gt;
+                &lt;/h1&gt;
+            &lt;/div&gt;
+        )
+    }
+}
+ReactDOM.render(&lt;App&gt;&lt;/App&gt;,document.getElementById('root'))
+</code></pre>
+
+<h4>4.5.2 演示Mouse组件的复用</h4>
+<ul>
+<li>Mouse组件负责：封装复用的状态逻辑代码(1.状态 2.操作方法—)</li>
+<li>状态：鼠标坐标(x,y)</li>
+<li>操作状态的方法:鼠标移动事件</li>
+<li>传入的render prop负责:使用复用的状态来渲染UI结构</li>
+</ul>
+<p>代码：</p>
+<pre><code>import img from './/source//logo192.png'
+class Mouse extends React.Component{
+    // 鼠标位置state
+      state={
+            x:0,
+            y:0
+        }
+    // 鼠标移动事件处理程序
+    handleMouseMove=e=&gt;{
+        this.setState({
+            x:e.clientX,
+            y:e.clientY
+        })
+    }
+    // 监听鼠标移动事件
+    componentDidMount(){
+        window.addEventListener('mousemove',this.handleMouseMove)
+    }
+    render(){
+        return this.props.render(this.state)
+    }
+}
+class App extends React.Component{
+    render(){
+        return (
+            &lt;div&gt;
+                &lt;h1&gt;
+                    render props模式
+                    &lt;Mouse render={(mouse)=&gt;{
+                        return &lt;p&gt;鼠标位置：{mouse.x},{mouse.y}&lt;/p&gt;
+                    }}&gt;&lt;/Mouse&gt;
+                &lt;/h1&gt;
+                &lt;Mouse render={mouse=&gt;{
+                    return (
+                        &lt;img
+                        src={img} alt=&quot;图标&quot;
+                        style={{
+                            position:'absolute',
+                            top:mouse.y-90,
+                            left:mouse.x-90
+                        }}&gt;&lt;/img&gt;
+                    )
+                }}&gt;
+
+                &lt;/Mouse&gt;
+            &lt;/div&gt;
+        )
+    }
+}
+ReactDOM.render(&lt;App&gt;&lt;/App&gt;,document.getElementById('root'))
+</code></pre>
+
+<h4>4.5.3 childern代替render属性</h4>
+<ul>
+<li>注意:并不是该模式叫render props就必须使用名为render的prop，实际上可以使用任意名称的prop</li>
+<li>把prop是一个函数并告诉组件要渲染什么内容的技术叫:render props模式</li>
+<li>推荐：使用children代替render属性</li>
+</ul>
+<p>代码：</p>
+<pre><code>class Mouse extends React.Component{
+    // 鼠标位置state
+      state={
+            x:0,
+            y:0
+        }
+    // 鼠标移动事件处理程序
+    handleMouseMove=e=&gt;{
+        this.setState({
+            x:e.clientX,
+            y:e.clientY
+        })
+    }
+    // 监听鼠标移动事件
+    componentDidMount(){
+        window.addEventListener('mousemove',this.handleMouseMove)
+    }
+    render(){
+        return this.props.children(this.state)
+    }
+}
+class App extends React.Component{
+    render(){
+        return (
+            &lt;div&gt;
+                &lt;h1&gt;
+                    render props模式
+                    &lt;Mouse&gt;
+                    {mouse=&gt;{
+                        return &lt;p&gt;鼠标位置：{mouse.x},{mouse.y}&lt;/p&gt;
+                    }}&lt;/Mouse&gt;
+                &lt;/h1&gt;
+            &lt;/div&gt;
+        )
+    }
+}
+ReactDOM.render(&lt;App&gt;&lt;/App&gt;,document.getElementById('root'))
+</code></pre>
+
+<p><strong>代码优化</strong></p>
+<ol>
+<li>推荐：给render props模式添加props校验
+   <code>Mouse.propsTypes={children:PropTypes.func.isRequired}</code></li>
+<li>应该在组件卸载时解除mousemove事件绑定
+   <code>componentWillUnmount(){window.removeEventListener('mousemove',thishandleMouseMove)}</code></li>
+</ol>
+<p>代码:</p>
+<pre><code>import PropTypes from 'prop-types'
+class Mouse extends React.Component{
+    // 鼠标位置state
+      state={
+            x:0,
+            y:0
+        }
+    // 鼠标移动事件处理程序
+    handleMouseMove=e=&gt;{
+        this.setState({
+            x:e.clientX,
+            y:e.clientY
+        })
+    }
+    // 监听鼠标移动事件
+    componentDidMount(){
+        window.addEventListener('mousemove',this.handleMouseMove)
+    }
+    // 组件卸载时移除事件绑定
+    componentWillUnmount(){
+        window.addEventListener('mousemove',this.handleMouseMove)
+    }
+    render(){
+        return this.props.children(this.state)
+    }
+}
+// 添加props校验
+Mouse.propTypes={
+    children:PropTypes.func.isRequired
+}
+class App extends React.Component{
+    render(){
+        return (
+            &lt;div&gt;
+                &lt;h1&gt;
+                    render props模式
+                    &lt;Mouse&gt;
+                    {mouse=&gt;{
+                        return &lt;p&gt;鼠标位置：{mouse.x},{mouse.y}&lt;/p&gt;
+                    }}&lt;/Mouse&gt;
+                &lt;/h1&gt;
+            &lt;/div&gt;
+        )
+    }
+}
+ReactDOM.render(&lt;App&gt;&lt;/App&gt;,document.getElementById('root'))
+</code></pre>
+
+<h3>4.6 高阶组件</h3>
+<h4>4.6.1 概述</h4>
+<ul>
+<li>目的：实现状态逻辑复用</li>
+<li>采用包装模式,比如：手机壳</li>
+<li>手机：获取保护功能</li>
+<li>手机壳：提供保护功能</li>
+<li>高阶组件就相当于手机壳，通过包装组件，增强组件功能</li>
+</ul>
+<p><strong>思路分析</strong></p>
+<ul>
+<li>高阶组件(HOC)是一个函数，接收要包装的组件，返回增强后的组件
+<code>const EnhancedComponent=withHOC(WrappedComponent)</code></li>
+<li>高阶组件内部创建一个类组件，在这个类组件中提供复用的状态逻辑代码，通过prop将复用的状态传递给</li>
+<li>被包装组件WrappedComponent</li>
+</ul>
+<p><strong>使用步骤</strong> </p>
+<ol>
+<li>创建一个函数，名称以with开头</li>
+<li>指定函数参数，参数应该以大写字母开头(作为要渲染的组件)</li>
+<li>在函数内部创建一个类组件，提供复用的状态逻辑代码，并返回</li>
+<li>在该组件中，渲染参数组件，同时将状态通过prop传递给参数组件</li>
+<li>调用该高阶组件，传入要增强的组件，通过返回值拿到增强后的组件，并将其渲染到页面中</li>
+</ol>
+<p>示例代码：</p>
+<pre><code>fucntion withMouse(WrappedComponent){
+    class Mouse extends React.Component{
+        render(){
+            return &lt;WrappedComponent {...this.state}&gt;&lt;/WrappedComponent&gt;
+        }
+    }
+    return Mouse
+}
+</code></pre>
+
+<p>代码：</p>
+<pre><code>import img from './/source//logo192.png'
+function withMouse(WrappedComponent){
+    // 该组件提供复用状态逻辑
+    class Mouse extends React.Component{
+    //    鼠标状态
+    state={
+        x:0,
+        y:0
+    }
+    handleMouseMove=e=&gt;{
+        this.setState({
+            x:e.clientX,
+            y:e.clientY
+        })
+    }
+    // 控制鼠标状态的逻辑
+    componentDidMount(){
+        window.addEventListener('mousemove',this.handleMouseMove)
+    }
+    // 组件卸载时解绑事件
+    componentWillUnmount(){
+        window.removeEventListener('mousemove',this.handleMouseMove)
+    }
+    render(){
+        return &lt;WrappedComponent {...this.state}&gt;&lt;/WrappedComponent&gt;
+    }
+ }
+ return Mouse
+}
+const Mouse = props =&gt;(
+   &lt;p&gt;
+        鼠标位置: ({props.x},{props.y})
+  &lt;/p&gt;
+)
+const Logo=props=&gt;(
+     &lt;img
+        src={img} alt=&quot;图标&quot;
+        style={{
+            position:'absolute',
+            top:props.y-90,
+            left:props.x-90
+        }}&gt;&lt;/img&gt;
+)
+// 获取增强后的组件,调用高阶组件函数
+const MousePosition=withMouse(Mouse)
+const LogoPosition=withMouse(Logo)
+class App extends React.Component{
+    render(){
+        return (
+            &lt;div&gt;
+                &lt;h1&gt;高阶组件&lt;/h1&gt;
+                &lt;MousePosition&gt;&lt;/MousePosition&gt;
+                &lt;LogoPosition&gt;&lt;/LogoPosition&gt;
+            &lt;/div&gt;
+        )
+    }
+}
+ReactDOM.render(&lt;App&gt;&lt;/App&gt;,document.getElementById('root'))
+</code></pre>
+
+<h4>4.6.2 设置displayName</h4>
+<p>高阶组件的displayName</p>
+<ul>
+<li>使用高阶组件存在的问题：得到的两个组件名称相同</li>
+<li>原因：默认情况下，React使用组件名称作为displayName</li>
+<li>解决方式：为高阶组件设置displayName便于调试时区分不同的组件</li>
+<li>displayName的作用：用于设置调试信息(React Developer Tools信息)</li>
+</ul>
+<p>设置方式：(在高阶函数中编写)</p>
+<pre><code>Mouse.displayName=`WithMouse${getDisplayName(WrappedComponent)}`
+ return Mouse
+}
+</code></pre>
+
+<p>单独编写：</p>
+<pre><code>function getDisplayName(WrappedComponent){
+    return WrappedComponent.displayName||WrappedComponent.name||'Component'
+}
+</code></pre>
+
+<h4>4.6.3 传递props</h4>
+<ul>
+<li>问题：props丢失</li>
+<li>原因：高阶组件没有往下传递props</li>
+<li>解决方式：渲染WrappedComponent时，将state和this.props一起传递给组件</li>
+<li>传递方式：
+<code>&lt;WrappedComponent {...this.state}{...this.props}&gt;&lt;/WrappedComponent&gt;</code></li>
+</ul>
+<h3>4.7 React组件进阶总结</h3>
+<ol>
+<li>组件通讯是构建React应用必不可少的一环</li>
+<li>props的灵活性让组件变得更加强大</li>
+<li>状态提升是React组件的常用模式</li>
+<li>组件生命周期有助于理解组件的运行过程</li>
+<li>钩子函数让开发者可以在特定的实际执行某种功能</li>
+<li>render props模式和高阶组件可以实现组件状态逻辑复用</li>
+<li>组件的极简模型：<code>(state,props)=&gt;UI</code></li>
+</ol>
+<h2>五、React原理</h2>
+<h3>5.1 学习目标</h3>
+<ul>
+<li>知道setState()更新数据是异步的</li>
+<li>知道JSX语法的转化过程</li>
+<li>能说出React组件的更新机制</li>
+<li>能够对组件进行性能优化</li>
+<li>能够说出虚拟DOM和Diff算法</li>
+</ul>
+<h3>5.2 setState()说明</h3>
+<h4>5.2.1 更新数据与推荐语法</h4>
+<ul>
+<li>setState()是异步更新数据的(更新数据后不立即改变)</li>
+<li>注意：一个函数中多次使用setState(),后面setState不依赖于前面的setState</li>
+<li>可以调用多次setState，合并后，只会触发一次渲染(render)</li>
+</ul>
+<p><strong>推荐语法</strong></p>
+<ul>
+<li>推荐： 使用<code>setState((state,props)=&gt;{})</code>语法</li>
+<li>参数state：表示最新的state</li>
+<li>参数props：表示最新的props</li>
+</ul>
+<h4>5.2.2 setState的第二个参数</h4>
+<ul>
+<li>场景：在状态更新(页面完成重新渲染)后立即执行某个操作</li>
+<li>语法：setState(updater[,callback])</li>
+</ul>
+<p>示例代码：</p>
+<pre><code>this.setState(
+      (state,props)=&gt;{
+          return {
+              count:state.count+1
+          }
+      },
+    //  状态更新后并且重新渲染后立即执行： 
+      ()=&gt;{ 
+        console.log('状态更新完成',this.state.count)
+    })
+</code></pre>
+
+<h3>5.3 JSX语法的转化过程</h3>
+<ul>
+<li>JSX仅仅是createElement()方法的简化语</li>
+<li>JSX语法被@bable/preset-react插件编译为createElement()方法</li>
+<li>转化过程：JSX语法-&gt;createElement()-&gt;React元素</li>
+<li>React元素：是一个对象，用来描述你希望在屏幕上看到的内容</li>
+</ul>
+<h3>5.4 组件更新机制</h3>
+<ul>
+<li>setState()两个作用：1.修改state 2.更新组件(UI)</li>
+<li>过程：父组件重新渲染时，也会重新渲染子组件，但是只会渲染当前组件子树(当前组件及其所有子组件和后代组件)</li>
+</ul>
+<h3>5.5 组件性能优化</h3>
+<h4>5.5.1 减轻state</h4>
+<ul>
+<li>减轻state：只存储组件渲染相关的数据(比如:count/列表数据/loading等)</li>
+<li>注意：不用做渲染的数据不要放在state中，比如定时器的id等</li>
+<li>更渲染无关的数据，需要在多个方法中用到的数据，应该放在this中</li>
+</ul>
+<h4>5.5.2 避免不必要的重新渲染</h4>
+<ul>
+<li>组件更新机制：父组件更新会引起子组件也被更新，这种思路很清晰</li>
+<li>问题：子组件没有任何变化时也会重新渲染</li>
+<li>如何避免不必要的更新渲染呢？</li>
+<li>解决问题：使用钩子函数
+<code>shouldComponentUpdate(nextProps,nextState)</code></li>
+<li>作用：通过返回值决定该组件是否重新渲染，返回true表示重新渲染，false表示不重新渲染</li>
+<li>触发时机：更新阶段的钩子函数，组件重新渲染前执行(shouldComponentUpdate-&gt;render),若返回false，则render不执行</li>
+<li>nextState为最新的状态，this.state为更新前的状态</li>
+</ul>
+<p>钩子函数：</p>
+<p>shouldComponentUpdate(nextProps,nextState){
+   //最新的状态
+   console.log('最新的state',nextState)
+   //更新前的状态
+   console.log('this.state',this.state)
+   return true
+}</p>
+<p><strong>案例</strong></p>
+<p>随机数案例代码(通过state阻止相同值的更新)：</p>
+<pre><code>class App extends React.Component{
+    state={
+       number:0
+    }
+    handleClick=()=&gt;{
+        this.setState(()=&gt;{
+            return {
+                number:Math.floor(Math.random()*3)
+            }
+        })
+    }
+    // 因为两次生成的随机数相同，如果相同则不需要重新渲染
+    shouldComponentUpdate(nextProps,nextState){
+        console.log('最新状态：',nextState,'当前状态：',this.state)
+            return nextState.number!==this.state.number
+    }
+    render(){
+        console.log('render')
+        return (
+            &lt;div&gt;
+                &lt;h1&gt;随机数：{this.state.number}&lt;/h1&gt;
+                &lt;button onClick={this.handleClick}&gt;生成随机数&lt;/button&gt;
+            &lt;/div&gt;
+        )
+    }
+}
+ReactDOM.render(&lt;App&gt;&lt;/App&gt;,document.getElementById('root'))
+</code></pre>
+
+<p>随机数案例代码(通过props阻止相同值的更新)： </p>
+<pre><code>class App extends React.Component{
+    state={
+       number:0
+    }
+    handleClick=()=&gt;{
+        this.setState(()=&gt;{
+            return {
+                number:Math.floor(Math.random()*3)
+            }
+        })
+    }
+    // 因为两次生成的随机数相同，如果相同则不需要重新渲染
+    // shouldComponentUpdate(nextProps,nextState){
+    //     console.log('最新状态：',nextState,'当前状态：',this.state)
+    //         return nextState.number!==this.state.number
+    // }
+    render(){
+        return (
+            &lt;div&gt;
+               &lt;NumberBox number={this.state.number}&gt;&lt;/NumberBox&gt;
+                &lt;button onClick={this.handleClick}&gt;生成随机数&lt;/button&gt;
+            &lt;/div&gt;
+        )
+    }
+}
+class NumberBox extends React.Component{
+    shouldComponentUpdate(nextProps){
+        console.log('最新props：',nextProps,'更新的前props：',this.props)
+        return nextProps.number!==this.props.number
+    }
+   render(){
+    console.log('子组件的render')
+    return &lt;h1&gt;随机数：{this.props.number}&lt;/h1&gt;
+   }
+}
+ReactDOM.render(&lt;App&gt;&lt;/App&gt;,document.getElementById('root'))
+</code></pre>
+
+<h4>5.5.3 纯组件</h4>
+<ul>
+<li>说明：纯组件内部的对比是shallow compare(浅层对比)</li>
+<li>对比值类型来说：比较两个值是否相同(直接赋值即可，没有坑)</li>
+<li>对于引用类型：只比较对象的引用(地址)是否相同</li>
+<li>主要：state或props中属性值为引用类型时，一应该创建新数据，不要直接修改原数据！</li>
+</ul>
+<p>示例代码：</p>
+<pre><code>//创建新数据，newObj为obj的副本，并更改number的值
+const newObj={...this.state.obj,number:1}
+//把新数据赋值给obj
+this.setState(()=&gt;{
+    return {
+        obj:newObj
+    }
+})
+</code></pre>
+
+<p><strong>创建新数据的方法</strong></p>
+<ul>
+<li>不要使用数组的push/unshift直接修改当前数组的方法</li>
+<li>应该使用concat或slice这些返回新数组的方法</li>
+</ul>
+<p>代码：</p>
+<pre><code>this.setState({
+    list:[...this.state.list,{新数据}]
+})
+</code></pre>
+
+<h3>5.6 虚拟DOM和Diff算法</h3>
+<ul>
+<li>React更新视图的思想是：只要state变化就重新渲染视图</li>
+<li>特点：思路非常清晰</li>
+<li>问题：组件只有一个DOM元素需要更新时，也得把整个组件的内容重新渲染到页面中吗？ （不是）</li>
+<li>理想状态：部分更新，只更新变化的地方</li>
+<li>问题：React是如何做到部分更新的？ 使用虚拟DOM配合Diff算法</li>
+</ul>
+<p>虚拟DOM：本质上就是一个JS对象，用来描述你希望在屏幕上看到的内容(UI)</p>
+<p><strong>执行过程</strong></p>
+<ol>
+<li>初始渲染时，React会根据初始state，创建一个虚拟DOM对象</li>
+<li>根据虚拟DOM生成真正的DOM,渲染到页面中</li>
+<li>当前数据变化后(setState())，重新根据新的数据，创建新的虚拟DOM对象</li>
+<li>与上次得到的虚拟DOM对象，使用Diff算法对比，得到需要更新的内容</li>
+<li>最终，React只需将变化的内容更新(patch)到DOM中，重新渲染到页面</li>
+<li>组件render()调用后，并不意味着浏览器中的重新渲染！仅仅说明要进行diff，根据状态和JSX结构生成虚拟DOM对象</li>
+</ol>
+<h3>5.7 React原理总结</h3>
+<ol>
+<li>工作角度：应用第一，原理第二</li>
+<li>原理有助于更好理解React的自身运行机制</li>
+<li>setState()异步更新数据</li>
+<li>父组件更新导致子组件更新，纯组件提升性能</li>
+<li>思路清晰简单为前提，虚拟DOM和Diff保效率</li>
+<li>虚拟DOM-&gt;state+JSX</li>
+<li>虚拟DOM的真正价值从来都不是性能，最大价值让浏览器脱离了React环境的束缚</li>
+</ol>
+<h2>六、React路由</h2>
+<h3>6.1 React路由介绍</h3>
+<p>现代的前端应用大多都是SPA(单页面应用程序)，也就是只有一个HTML页面的应用程序，因为它的用户体验更好，对服务器的压力更小，所以更受欢迎，为了有效的使用单个页面来管理原来多页面的功能，前端路由应运而生。</p>
+<p>-前端路由的功能：让用户从一个视图(页面)导航到另一个视图(页面)
+- 前端路由是一套隐射规则，在React中，是URL路径与组件的对应关系
+- 使用React路由简单来说，就是配置路径和组件(配对)</p>
+<h3>6.2 路由的基本使用</h3>
+<p><strong>使用步骤</strong> </p>
+<ol>
+<li>安装：<code>yarn add react-router-dom</code></li>
+<li>导入路由的三个核心组件：Router/Route/Link
+<code>import {BrowserRouter as Router,Route,Link} from 'react-router-dom'</code></li>
+<li>使用Router组件包裹整个应用(重要)</li>
+<li>使用Link组件作为导航菜单(路由入口)
+<code>&lt;Link to=&quot;/first&quot;&gt;页面一&lt;/Link&gt;</code></li>
+<li>使用Router组件配置路由规则和要展示的组件(路由出口)</li>
+</ol>
+<p>代码：(点击路由入口，则显示出路由出口)</p>
+<pre><code>import {BrowserRouter as Router,Route,Link} from 'react-router-dom'
+const First=()=&gt;(
+    &lt;p&gt;页面一的内容&lt;/p&gt;
+)
+const App=()=&gt;(
+    // 使用Router组件包裹整个应用
+    &lt;Router&gt;
+        &lt;div&gt;
+            &lt;h1&gt;React路由基础&lt;/h1&gt;
+            {/* 指定路由入口 */}
+            &lt;Link to=&quot;/first&quot;&gt;页面一&lt;/Link&gt;
+            {/* 指定路由出口 */}
+            &lt;Route path=&quot;/first&quot; component={First}&gt;&lt;/Route&gt;
+        &lt;/div&gt;
+    &lt;/Router&gt;
+)
+ReactDOM.render(&lt;App&gt;&lt;/App&gt;,document.getElementById('root'))
+</code></pre>
+
+<h3>6.3 常用组件说明</h3>
+<ul>
+<li>Router组件:包裹整个应用，一个React应用只需要使用一次</li>
+<li>两种常用的Router:HashRouter和BrowserRouter</li>
+<li>HashRouter:使用URL的哈希值实现(localhost:3000/#/first)</li>
+<li>(推荐)BrowserRouter:使用H5的history API实现(localhost:3000/first)</li>
+<li>Link组件：用于指定导航链接(a标签)，to属性为浏览器地址栏中的pathname(location.pathname)
+<code>&lt;Link to=&quot;/first&quot;&gt;页面一&lt;/Link&gt;</code></li>
+<li>Route组件:指定路由展示组件相关信息，path属性为路由规则，component属性为展示的组件，Route组件写在哪里渲染出来的组件就展示在哪
+<code>&lt;Route path=&quot;/first&quot; component={First}&gt;&lt;/Route&gt;</code></li>
+</ul>
+<h3>6.4 路由的执行过程</h3>
+<ol>
+<li>点击Link组件(a标签)，修改了浏览器地址栏中的url</li>
+<li>React路由监听到地址栏url的变化</li>
+<li>React路由内部遍历所有Route组件，使用路由规则(path)与pathname进行匹配</li>
+<li>当路由规则(path)能够匹配地址栏中的pathname时，就展示该Route组件的内容</li>
+</ol>
+<h3>6.5 编程式导航</h3>
+<ul>
+<li>场景：点击登入按钮，登入成功后，通过代码跳转到后台首页，如何实现？</li>
+<li>编程式导航：通过JS代码来实现页面跳转</li>
+<li>history是React路由提供，用于获取浏览器记录的相关信息</li>
+<li>push(path):跳转到某个页面，参数path表示要跳转的路径</li>
+<li>go(n):前进或者退后某个页面，参数n表示前进或后退页面数量(比如:-1表示后退到上一页)</li>
+</ul>
+<p>代码：</p>
+<pre><code>import {BrowserRouter as Router,Route,Link} from 'react-router-dom'
+class Login extends React.Component{
+    handleLogin=()=&gt;{
+        // 使用编程式导航实现路由跳转
+        this.props.history.push('/home')
+    }
+    render(){
+        return (
+            &lt;div&gt;
+                &lt;p&gt;登入页面&lt;/p&gt;
+                &lt;button onClick={this.handleLogin}&gt;登录&lt;/button&gt;
+            &lt;/div&gt;
+        )
+    }
+}
+const Home =(props)=&gt;{
+    const handleBack=()=&gt;{
+        // 表示返回上一个页面
+       props.history.go(-1)
+    }
+    return(
+    &lt;div&gt;
+        &lt;h1&gt;后台首页&lt;/h1&gt;
+        &lt;button onClick={handleBack}&gt;返回登入页面&lt;/button&gt;
+    &lt;/div&gt;)
+}
+const App=()=&gt;(
+    &lt;Router&gt;
+    &lt;div&gt;
+        &lt;h1&gt;编程式导航&lt;/h1&gt;
+        &lt;Link to=&quot;/login&quot;&gt;登入页面&lt;/Link&gt;
+        &lt;Route path=&quot;/login&quot; component={Login}&gt;&lt;/Route&gt;
+        &lt;Route path=&quot;/home&quot; component={Home}&gt;&lt;/Route&gt;
+    &lt;/div&gt;
+    &lt;/Router&gt;
+)
+ReactDOM.render(&lt;App&gt;&lt;/App&gt;,document.getElementById('root'))
+</code></pre>
+
+<h3>6.6 默认路由</h3>
+<ul>
+<li>问题：现在的路由都是点击导航菜单后展示的，如何在进入页面的时候就展示呢？</li>
+<li>默认路由：表示进入页面时就会匹配的路由</li>
+<li>默认路由path为:/ <br />
+<code>&lt;Router path=&quot;/ component={Home} /&gt;</code></li>
+</ul>
+<h3>6.7 匹配模式</h3>
+<h4>6.7.1 模糊匹配模式</h4>
+<ul>
+<li>问题：当Link组件的to属性值为:&quot;/login&quot;时，为什么默认路由也被匹配成功(默认路由还显示在页面中)？</li>
+<li>默认情况下，React路由是模糊匹配模式</li>
+<li>模糊匹配规则，只要pathname以path开头就会匹配成功</li>
+<li>当path为&quot;/&quot;，都能匹配所有的pathname</li>
+</ul>
+<h4>6.7.2 精确匹配模式</h4>
+<ul>
+<li>问题：默认路由任意情况下都会展示，如何避免这种问题？</li>
+<li>给Route组件添加excat属性，让其变为精确匹配模式
+<code>&lt;Route exact path=&quot;/&quot; component={Home}&gt;</code></li>
+</ul>
+<h3>6.8 React路由基础总结</h3>
+<ol>
+<li>React路由可以有效的管理多个视图(组件)实现SPA</li>
+<li>Router包裹整个应用，只需要使用一次</li>
+<li>Link组件是入口，Route组件是出口</li>
+<li>通过props.history实现编程式导航</li>
+<li>默认模糊匹配，添加exact变精确匹配</li>
+<li>React路由的一切都是组件，可以像思考组件一样思考路由</li>
+</ol>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
